@@ -12,16 +12,39 @@ public class Drink {
     private int ice;
 
     public static Map<Integer, Drink> menu = new LinkedHashMap<Integer, Drink>();
+
     static {
-        menu.put(1, new Espresso());
-        menu.put(2, new Cappuccino());
-        menu.put(3, new Americano());
+        menu.put(1, new Drink.Builder().withShot(1).build()); //espresso
+        menu.put(2, new Drink.Builder().withShot(2).withMilk(1).build()); //cappuccino
+        menu.put(3, new Drink.Builder().withShot(1).withWater(1).build());//americano
     }
 
-    public Map<Integer, Builder> supplements = new LinkedHashMap<Integer, Builder>();
-    {
-        supplements.put(1, new Builder(this).withShot(1));
-        supplements.put(2, new Builder(this).withMilk(1));
+
+
+    public static Drink totalDrink(Drink drink, int num) {
+        switch (num) {
+            case 0:
+                return drink;
+            case 1:
+                return new Builder(drink).withShot(1).build();
+
+            case 2:
+                return new Builder(drink).withMilk(1).build();
+
+            case 3:
+                return new Builder(drink).withWater(1).build();
+
+            case 4:
+                return new Builder(drink).withSugar(1).build();
+
+            case 5:
+                return new Builder(drink).withCinnamon(1).build();
+
+            case 6:
+                return new Builder(drink).withIce(1).build();
+
+        }
+        return drink;
     }
 
 
@@ -67,6 +90,11 @@ public class Drink {
         public Builder withIce(int ice) {
             this.drink.ice += ice;
             return this;
+        }
+
+        //Метод, собирающий билд!
+        public Drink build() {
+            return new Drink();
         }
     }
 

@@ -32,7 +32,9 @@ public class Program {
             if (input < 1 || input >= Drink.menu.size()) {
                 throw new IllegalArgumentException();
             } else {
-                drink = Drink.menu.get(input);
+                drink = Drink.menu.get(1);
+                System.out.println("шотов " + drink.getShot());
+                System.out.println("молока " + drink.getMilk());
             }
 
         } catch (InputMismatchException e) {
@@ -54,10 +56,7 @@ public class Program {
                 String input = scan.next();
                 if (!stopAsking(input)) {
                     int num = Integer.parseInt(input);
-                    System.out.println(num);
-                    drink.supplements.get(1);
-                    drink.supplements.get(1);
-                    drink.supplements.get(1);
+                    Drink.totalDrink(drink, num);
                     System.out.println("в напитке шотов: " + drink.getShot());
                 } else {
                     int num = Integer.parseInt(input);
