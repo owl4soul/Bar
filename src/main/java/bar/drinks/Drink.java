@@ -11,11 +11,12 @@ public class Drink {
     private int cinnamon;
     private int ice;
 
-    public static Map<Integer, Drink> menu = new LinkedHashMap<Integer, Drink>() {{
+    public static Map<Integer, Drink> menu = new LinkedHashMap<Integer, Drink>();
+    static {
         menu.put(1, new Espresso());
         menu.put(2, new Cappuccino());
         menu.put(3, new Americano());
-    }};
+    }
 
 
     //Nested Class
