@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Bar {
     private Store store;
-    private Store producedItems; //keep in mind of it is stores all products we've produced
+    private Store producedItems; //keep in mind of it stores all products we've produced
 
     public Bar() {
         store = new Store()
