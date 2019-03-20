@@ -8,5 +8,4 @@ public class Stock {
     int cinnamon;
     int ice;
 
-
 }
