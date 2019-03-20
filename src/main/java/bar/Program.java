@@ -132,7 +132,8 @@ public class Program {
     static boolean stopAsking(String input) throws IOException {
         if (input.isEmpty()) {
             System.out.println("Раз Вы молчите, значит ничего не нужно.");
-            return true;
+            input = "stop";
+            return stopAsking(input);
         } else if (input.equalsIgnoreCase("stop")
                 || input.equalsIgnoreCase("стоп")) {
             System.out.println("Как скажете.");
