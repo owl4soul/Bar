@@ -3,15 +3,15 @@ package bar;
 import bar.drinks.Drink;
 
 public class Stock {
-    private int shot = 10;
-    private int milk = 10;
-    private int water = 999;
-    private int sugar = 999;
-    private int cinnamon = 999;
-    private int ice = 999;
+    private static int shot = 10;
+    private static int milk = 10;
+    private static int water = 999;
+    private static int sugar = 999;
+    private static int cinnamon = 999;
+    private static int ice = 999;
 
     public void showStock() {
-//        System.out.println("Подсчитываю остатки...");
+        System.out.println("Подсчитываю остатки на складе...");
         System.out.println("шотов: " + shot);
         System.out.println("молока: " + milk);
         System.out.println("воды: " + water);
@@ -20,6 +20,8 @@ public class Stock {
         System.out.println("льда: " + ice);
 
     }
+
+
 
     //TODO Нужен билдер для склада
 

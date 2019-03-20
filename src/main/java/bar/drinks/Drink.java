@@ -12,11 +12,18 @@ public class Drink {
     private int cinnamon;
     private int ice;
 
+    public void showDrink() {
+        System.out.println("Ваш напиток состоит из: ");
+        System.out.println("шотов: " + shot);
+        System.out.println("молока: " + milk);
+        System.out.println("воды: " + water);
+        System.out.println("корицы: " + cinnamon);
+        System.out.println("сахара: " + sugar);
+        System.out.println("льда: " + ice);
+
+    }
 
     public Drink classicDrink(int num) {
-        if (num == 1) {
-            System.out.println("1111");
-        }
         switch (num) {
             case 1:
                 new Builder(this).withShot(1).build(); //espresso
@@ -60,7 +67,7 @@ public class Drink {
     //Nested Class
     public static class Builder {
         private Drink drink;
-        public Stock stock;
+        public Stock stock = new Stock();
 
         //Конструктор
         public Builder() {
@@ -74,7 +81,7 @@ public class Drink {
         //Методы, устанавливающие параметры
         public Builder withShot(int shot) {
             this.drink.shot += shot;
-            stock.setShot(stock.getShot() - drink.getShot());
+            stock.setShot(stock.getShot() - shot);
             return this;
         }
 

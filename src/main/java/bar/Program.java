@@ -41,6 +41,7 @@ public class Program {
                 drink.classicDrink(input);
                 System.out.println("шотов " + drink.getShot());
                 System.out.println("молока " + drink.getMilk());
+                drink.showDrink();
                 return;
             }
 
