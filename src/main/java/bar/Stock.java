@@ -7,4 +7,5 @@ public class Stock {
     int sugar;
     int cinnamon;
     int ice;
+
 }
