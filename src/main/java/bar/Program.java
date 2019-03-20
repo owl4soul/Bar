@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class Program {
     static private boolean endConversation;
     static Scanner scan = new Scanner(System.in);
-    static Drink drink;
+    static Drink drink = new Drink();
 
     public static void main(String[] args) {
         Drink dr = new Drink();
 //        Drink.supplements.get(1);
-        Drink.menu.get(2);
+//        Drink.menu.get(2);
         conversation();
     }
 
@@ -29,10 +29,10 @@ public class Program {
             System.out.println("Что Вам приготовить? Введите номер: ");
             int input = scan.nextInt();
             //Сверяем номер с барной картой (menu), если попадает в диапазон возможных напитков, то готовим
-            if (input < 1 || input >= Drink.menu.size()) {
+            if (input < 1 || input >= 3) {
                 throw new IllegalArgumentException();
             } else {
-                drink = Drink.menu.get(1);
+                drink.classicDrink(input);
                 System.out.println("шотов " + drink.getShot());
                 System.out.println("молока " + drink.getMilk());
             }
@@ -56,7 +56,7 @@ public class Program {
                 String input = scan.next();
                 if (!stopAsking(input)) {
                     int num = Integer.parseInt(input);
-                    Drink.totalDrink(drink, num);
+                    drink.totalDrink(num);
                     System.out.println("в напитке шотов: " + drink.getShot());
                 } else {
                     int num = Integer.parseInt(input);

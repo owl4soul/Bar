@@ -11,40 +11,51 @@ public class Drink {
     private int cinnamon;
     private int ice;
 
-    public static Map<Integer, Drink> menu = new LinkedHashMap<Integer, Drink>();
+//    public Map<Integer, Drink> menu = new LinkedHashMap<Integer, Drink>();
+//
+//     {
+//        menu.put(1, new Espresso()); //espresso
+//        menu.put(2, new Cappuccino()); //cappuccino
+//        menu.put(3, new Drink.Builder().withShot(1).withWater(1).build());//americano
+//    }
 
-    static {
-        menu.put(1, new Drink.Builder().withShot(1).build()); //espresso
-        menu.put(2, new Drink.Builder().withShot(2).withMilk(1).build()); //cappuccino
-        menu.put(3, new Drink.Builder().withShot(1).withWater(1).build());//americano
+    public Drink classicDrink(int num) {
+        if (num == 1) {
+            System.out.println("1111");
+        }
+        switch (num) {
+            case 1:
+                new Drink.Builder(this).withShot(88).build();
+                return this;
+        }
+        return null;
     }
 
 
-
-    public static Drink totalDrink(Drink drink, int num) {
+    public Drink totalDrink(int num) {
         switch (num) {
             case 0:
-                return drink;
+                return this;
             case 1:
-                return new Builder(drink).withShot(1).build();
+                return new Builder(this).withShot(1).build();
 
             case 2:
-                return new Builder(drink).withMilk(1).build();
+                return new Builder(this).withMilk(1).build();
 
             case 3:
-                return new Builder(drink).withWater(1).build();
+                return new Builder(this).withWater(1).build();
 
             case 4:
-                return new Builder(drink).withSugar(1).build();
+                return new Builder(this).withSugar(1).build();
 
             case 5:
-                return new Builder(drink).withCinnamon(1).build();
+                return new Builder(this).withCinnamon(1).build();
 
             case 6:
-                return new Builder(drink).withIce(1).build();
+                return new Builder(this).withIce(1).build();
 
         }
-        return drink;
+        return this;
     }
 
 
