@@ -11,13 +11,14 @@ public class Program {
     static Drink drink;
 
     public static void main(String[] args) {
-        System.out.println(Drink.menu.get(1));
+        Drink dr = new Drink();
+//        Drink.supplements.get(1);
+        Drink.menu.get(2);
         conversation();
     }
 
     static void conversation() {
         while (!endConversation) {
-            Drink drink = null;
             askDrink();
             askSupplements(drink);
         }
@@ -46,17 +47,50 @@ public class Program {
     }
 
     static void askSupplements(Drink drink) {
-        try {
-            System.out.println("Что добавить в Ваш напиток? Введите номер: ");
-            int input = scan.nextInt();
-            System.out.println("Может, еще что-нибудь?");
-            int input2 = scan.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println(e.toString());
-            System.out.println("ОШИБКА! Возможно, были введены буквы или другие символы, кроме цифр, перечислите добавки заново.");
-            askSupplements(drink);
+        boolean stopAskSupplements = false;
+        do {
+            try {
+                System.out.println("Что добавить в Ваш напиток? Введите номер: ");
+                String input = scan.next();
+                if (!stopAsking(input)) {
+                    int num = Integer.parseInt(input);
+                    System.out.println(num);
+                    drink.supplements.get(1);
+                    drink.supplements.get(1);
+                    drink.supplements.get(1);
+                    System.out.println("в напитке шотов: " + drink.getShot());
+                } else {
+                    int num = Integer.parseInt(input);
+                    System.out.println("Может, еще что-нибудь?");
+                    String input2 = scan.nextLine();
+                    if (!stopAsking(input2)) {
+
+                    }
+                }
+
+
+            } catch (InputMismatchException e) {
+                System.out.println(e.toString());
+                System.out.println("ОШИБКА! Возможно, были введены буквы или другие символы, кроме цифр, перечислите добавки заново.");
+                askSupplements(drink);
+            }
+        } while (!stopAskSupplements);
+    }
+
+    static boolean stopAsking(String input) {
+        if (input == null) {
+            System.out.println("Раз Вы молчите, значит ничего не нужно.");
+            return true;
+        } else if (input.equalsIgnoreCase("stop")
+                || input.equalsIgnoreCase("стоп")
+                || input.equalsIgnoreCase("отстань")) {
+            System.out.println("Как скажете.");
+            return true;
+        } else {
+            return false;
         }
     }
+
 }
 
 

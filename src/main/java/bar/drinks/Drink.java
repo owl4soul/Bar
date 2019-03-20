@@ -18,6 +18,12 @@ public class Drink {
         menu.put(3, new Americano());
     }
 
+    public Map<Integer, Builder> supplements = new LinkedHashMap<Integer, Builder>();
+    {
+        supplements.put(1, new Builder(this).withShot(1));
+        supplements.put(2, new Builder(this).withMilk(1));
+    }
+
 
     //Nested Class
     public static class Builder {
@@ -26,6 +32,10 @@ public class Drink {
         //Конструктор
         public Builder() {
             this.drink = new Drink();
+        }
+
+        public Builder(Drink drink) {
+            this.drink = drink;
         }
 
         //Методы, устанавливающие параметры
