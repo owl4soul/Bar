@@ -9,16 +9,24 @@ public class Program {
     static private boolean endConversation;
     static Scanner scan = new Scanner(System.in);
     static Drink drink = new Drink();
+    static Stock stock = new Stock();
 
     public static void main(String[] args) {
+
+        stock.showStock();
+
         conversation();
     }
 
     static void conversation() {
         while (!endConversation) {
             askDrink();
+            stock.showStock();
             askSupplements(drink);
+            stock.showStock();
             askAgain(drink);
+            stock.showStock();
+
 
         }
     }

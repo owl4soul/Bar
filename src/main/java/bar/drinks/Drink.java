@@ -12,6 +12,7 @@ public class Drink {
     private int cinnamon;
     private int ice;
 
+
     public Drink classicDrink(int num) {
         if (num == 1) {
             System.out.println("1111");
@@ -59,6 +60,7 @@ public class Drink {
     //Nested Class
     public static class Builder {
         private Drink drink;
+        public Stock stock;
 
         //Конструктор
         public Builder() {
@@ -72,12 +74,13 @@ public class Drink {
         //Методы, устанавливающие параметры
         public Builder withShot(int shot) {
             this.drink.shot += shot;
-            Stock.get
+            stock.setShot(stock.getShot() - drink.getShot());
             return this;
         }
 
         public Builder withMilk(int milk) {
             this.drink.milk += milk;
+            stock.setMilk(stock.getMilk() - drink.getMilk());
             return this;
         }
 
