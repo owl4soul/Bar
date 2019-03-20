@@ -12,6 +12,18 @@ public class Drink {
     private int cinnamon;
     private int ice;
 
+    public Drink() {
+    }
+
+    public Drink(Drink drink) {
+        this.shot = drink.shot;
+        this.milk = drink.milk;
+        this.water = drink.water;
+        this.sugar = drink.sugar;
+        this.cinnamon = drink.cinnamon;
+        this.ice = drink.ice;
+    }
+
     public void showDrink() {
         System.out.println("Ваш напиток состоит из: ");
         System.out.println("шотов: " + shot);
@@ -80,15 +92,24 @@ public class Drink {
 
         //Методы, устанавливающие параметры
         public Builder withShot(int shot) {
-            this.drink.shot += shot;
-            stock.setShot(stock.getShot() - shot);
-            return this;
+
+            if (stock.setShot(stock.getShot() - shot)) {
+                this.drink.shot += shot;
+                return this;
+            } else {
+                return this;
+            }
+
         }
 
         public Builder withMilk(int milk) {
-            this.drink.milk += milk;
-            stock.setMilk(stock.getMilk() - drink.getMilk());
-            return this;
+
+            if (stock.setMilk(stock.getMilk() - milk)) {
+                this.drink.milk += milk;
+                return this;
+            } else {
+                return this;
+            }
         }
 
         public Builder withWater(int water) {

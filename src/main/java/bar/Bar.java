@@ -14,8 +14,13 @@ public class Bar {
     public static int countTotalPrice(Drink drink) {
         int totalShot = drink.getShot() * shotPrice;
         int totalMilk = drink.getMilk() * milkPrice;
-        System.out.println(totalMilk+totalShot);
-        return totalShot + totalMilk;
+        int totalWater = drink.getWater() * waterPrice;
+        int totalSugar = drink.getSugar() * sugarPrice;
+        int totalCinnamon = drink.getCinnamon() * cinnamonPrice;
+        int totalIce = drink.getIce() * icePrice;
+        int totalPrice = totalShot + totalMilk + totalWater + totalSugar + totalCinnamon + totalIce;
+        System.out.println("Напиток на сумму: " + totalPrice);
+        return totalPrice;
     }
 
 

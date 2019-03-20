@@ -11,7 +11,7 @@ public class Stock {
     private static int ice = 999;
 
     public void showStock() {
-        System.out.println("Подсчитываю остатки на складе...");
+        System.out.println("Остаток ингредиентов на складе: ");
         System.out.println("шотов: " + shot);
         System.out.println("молока: " + milk);
         System.out.println("воды: " + water);
@@ -40,11 +40,13 @@ public class Stock {
         return shot;
     }
 
-    public void setShot(int shot) {
+    public boolean setShot(int shot) {
         if (shot < 0) {
             System.out.println("Не хватает кофе!");
+            return false;
         } else {
             this.shot = shot;
+            return true;
         }
     }
 
@@ -52,11 +54,13 @@ public class Stock {
         return milk;
     }
 
-    public void setMilk(int milk) {
+    public boolean setMilk(int milk) {
         if (milk < 0) {
             System.out.println("Не хватает молока!");
+            return false;
         } else {
             this.milk = milk;
+            return true;
         }
     }
 
