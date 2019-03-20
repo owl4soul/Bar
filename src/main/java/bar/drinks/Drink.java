@@ -1,5 +1,8 @@
 package bar.drinks;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class Drink {
     private int shot;
     private int milk;
@@ -7,6 +10,13 @@ public class Drink {
     private int sugar;
     private int cinnamon;
     private int ice;
+
+    public static Map<Integer, Drink> menu = new LinkedHashMap<Integer, Drink>() {{
+        menu.put(1, new Espresso());
+        menu.put(2, new Cappuccino());
+        menu.put(3, new Americano());
+    }};
+
 
     //Nested Class
     public static class Builder {
@@ -48,8 +58,6 @@ public class Drink {
             return this;
         }
     }
-
-
 
 
     //Getter anad Setters
