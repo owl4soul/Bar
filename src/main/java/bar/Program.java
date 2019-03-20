@@ -11,9 +11,6 @@ public class Program {
     static Drink drink = new Drink();
 
     public static void main(String[] args) {
-        Drink dr = new Drink();
-//        Drink.supplements.get(1);
-//        Drink.menu.get(2);
         conversation();
     }
 
@@ -21,6 +18,8 @@ public class Program {
         while (!endConversation) {
             askDrink();
             askSupplements(drink);
+            askAgain(drink);
+
         }
     }
 
@@ -28,13 +27,13 @@ public class Program {
         try {
             System.out.println("Что Вам приготовить? Введите номер: ");
             int input = scan.nextInt();
-            //Сверяем номер с барной картой (menu), если попадает в диапазон возможных напитков, то готовим
-            if (input < 1 || input >= 3) {
+            if (input < 1 || input > 3) {
                 throw new IllegalArgumentException();
             } else {
                 drink.classicDrink(input);
                 System.out.println("шотов " + drink.getShot());
                 System.out.println("молока " + drink.getMilk());
+                return;
             }
 
         } catch (InputMismatchException e) {
@@ -49,32 +48,48 @@ public class Program {
     }
 
     static void askSupplements(Drink drink) {
+        Drink tmpDrink = drink;
         boolean stopAskSupplements = false;
         do {
             try {
                 System.out.println("Что добавить в Ваш напиток? Введите номер: ");
                 String input = scan.next();
-                if (!stopAsking(input)) {
+
+                while (!stopAsking(input)) {
                     int num = Integer.parseInt(input);
                     drink.totalDrink(num);
                     System.out.println("в напитке шотов: " + drink.getShot());
-                } else {
-                    int num = Integer.parseInt(input);
-                    System.out.println("Может, еще что-нибудь?");
-                    String input2 = scan.nextLine();
-                    if (!stopAsking(input2)) {
-
-                    }
+                    System.out.println("в напитке молока: " + drink.getMilk());
+                    return;
                 }
-
-
             } catch (InputMismatchException e) {
                 System.out.println(e.toString());
                 System.out.println("ОШИБКА! Возможно, были введены буквы или другие символы, кроме цифр, перечислите добавки заново.");
+                drink = tmpDrink;
                 askSupplements(drink);
             }
         } while (!stopAskSupplements);
     }
+
+    static void askAgain(Drink drink) {
+        System.out.println("Может, еще что-нибудь?");
+        String input = scan.next();
+            if (stopAsking(input)) {
+                return;
+            } else {
+                try {
+                    int num = Integer.parseInt(input);
+                    drink.totalDrink(num);
+                    askAgain(drink);
+                } catch (NumberFormatException e) {
+                    System.out.println(e.toString());
+                }
+            }
+
+    }
+
+
+
 
     static boolean stopAsking(String input) {
         if (input == null) {

@@ -1,7 +1,8 @@
 package bar.drinks;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import bar.Stock;
+
+
 
 public class Drink {
     private int shot;
@@ -11,22 +12,18 @@ public class Drink {
     private int cinnamon;
     private int ice;
 
-//    public Map<Integer, Drink> menu = new LinkedHashMap<Integer, Drink>();
-//
-//     {
-//        menu.put(1, new Espresso()); //espresso
-//        menu.put(2, new Cappuccino()); //cappuccino
-//        menu.put(3, new Drink.Builder().withShot(1).withWater(1).build());//americano
-//    }
-
     public Drink classicDrink(int num) {
         if (num == 1) {
             System.out.println("1111");
         }
         switch (num) {
             case 1:
-                new Drink.Builder(this).withShot(88).build();
+                new Builder(this).withShot(1).build(); //espresso
                 return this;
+            case 2:
+                return new Builder(this).withShot(2).withMilk(1).build(); //cappuccino
+            case 3:
+                return new Builder(this).withShot(1).withWater(1).build(); // americano
         }
         return null;
     }
@@ -75,6 +72,7 @@ public class Drink {
         //Методы, устанавливающие параметры
         public Builder withShot(int shot) {
             this.drink.shot += shot;
+            Stock.get
             return this;
         }
 
