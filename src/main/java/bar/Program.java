@@ -2,27 +2,34 @@ package bar;
 
 import bar.drinks.Drink;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Program {
     static private boolean endConversation;
-    static Scanner scan;
     static Drink drink = new Drink();
     static Stock stock = new Stock();
+    static BufferedReader scan;
 
     public static void main(String[] args) {
-        scan = new Scanner(System.in);
+        scan = new BufferedReader(new InputStreamReader(System.in));
         stock.showStock();
         conversation();
     }
 
     static void conversation() {
-        drink = new Drink();
-        askDrink();
-        askSupplements(drink);
-        askAgain(drink);
+        try {
 
+            drink = new Drink();
+            askDrink();
+            askSupplements(drink);
+            askAgain(drink);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        while (!endConversation) {
 //
@@ -38,10 +45,10 @@ public class Program {
 //        }
     }
 
-    static void askDrink() {
+    static void askDrink() throws IOException {
 
         System.out.println("Что Вам приготовить? Введите номер: ");
-        String input = scan.nextLine();
+        String input = scan.readLine();
         if (!stopAsking(input)) {
             try {
                 int num = Integer.parseInt(input);
@@ -70,9 +77,9 @@ public class Program {
         }
     }
 
-    static void askSupplements(Drink drink) {
+    static void askSupplements(Drink drink) throws IOException {
         System.out.println("Что добавить в Ваш напиток? Введите номер: ");
-        String input = scan.next();
+        String input = scan.readLine();
         try {
             if (stopAsking(input)) {
                 return;
@@ -97,9 +104,9 @@ public class Program {
 
     }
 
-    static void askAgain(Drink drink) {
+    static void askAgain(Drink drink) throws IOException {
         System.out.println("Может, еще что-нибудь?");
-        String input = scan.next();
+        String input = scan.readLine();
         if (stopAsking(input)) {
             return;
         } else {
@@ -122,7 +129,7 @@ public class Program {
     }
 
 
-    static boolean stopAsking(String input) {
+    static boolean stopAsking(String input) throws IOException {
         if (input.isEmpty()) {
             System.out.println("Раз Вы молчите, значит ничего не нужно.");
             return true;
@@ -140,7 +147,7 @@ public class Program {
 
             System.out.println("Завершить программу? Нажмите 0 для выхода из программы.");
             try {
-                String input2 = scan.next();
+                String input2 = scan.readLine();
                 int num = Integer.parseInt(input2);
                 if (num == 0) {
                     System.exit(0);
