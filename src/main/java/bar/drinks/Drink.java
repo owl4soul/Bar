@@ -32,7 +32,6 @@ public class Drink {
         System.out.println("корицы: " + cinnamon);
         System.out.println("сахара: " + sugar);
         System.out.println("льда: " + ice);
-
     }
 
     public Drink classicDrink(int num) {
