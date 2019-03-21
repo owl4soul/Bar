@@ -1,16 +1,13 @@
 package bar;
 
-import bar.drinks.Americano;
 import bar.drinks.Card;
 import bar.drinks.Drink;
-import bar.drinks.Menu;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Map;
-import java.util.Scanner;
 
 import static bar.drinks.Card.card;
 
@@ -26,21 +23,6 @@ public class Program {
         for (Map.Entry <Integer, Drink> d: card.entrySet()) {
             System.out.println(d.toString());
         }
-
-
-
-//        Drink.fillMenu();
-//        for (Map.Entry<String, Drink> entry : Menu.menu.entrySet()) {
-//            System.out.println(entry.toString());
-//        }
-
-
-
-
-
-
-
-
 
         scan = new BufferedReader(new InputStreamReader(System.in));
         stock.showStock();
@@ -58,18 +40,6 @@ public class Program {
             e.printStackTrace();
         }
 
-//        while (!endConversation) {
-//
-//            askDrink();
-//            stock.showStock();
-//            askSupplements(drink);
-//            stock.showStock();
-//            askAgain(drink);
-//            stock.showStock();
-//            Bar.countTotalPrice(drink);
-//
-//
-//        }
     }
 
     static void askDrink() throws IOException {

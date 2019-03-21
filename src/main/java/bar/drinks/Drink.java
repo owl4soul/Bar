@@ -3,11 +3,6 @@ package bar.drinks;
 import bar.Stock;
 
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-
 public class Drink {
     private int shot;
     private int milk;
@@ -15,16 +10,6 @@ public class Drink {
     private int sugar;
     private int cinnamon;
     private int ice;
-
-//    public static final Map<String, Drink> drinks = new HashMap<String, Drink>();
-//    public static Drink americano = new Americano();
-//    public static Drink cappuccino = new Cappuccino();
-
-    public static void fillMenu() {
-        new Americano(true);
-        new Cappuccino(true);
-        new Espresso(true);
-    }
 
     public Drink() {
     }

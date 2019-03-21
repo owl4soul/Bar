@@ -2,7 +2,7 @@ package bar.drinks;
 
 import bar.Stock;
 
-public class Cappuccino extends Drink implements Menu {
+public class Cappuccino extends Drink {
     public static String name = "cappuccino";
     public static int id = 2;
 
@@ -18,21 +18,5 @@ public class Cappuccino extends Drink implements Menu {
         }
 
     }
-    public Cappuccino(boolean b) {
-        if (b) {
-            this.addDrinkToMenu();
-        } else if (!b) {
-            this.removeDrinkFromMenu();
-        }
-    }
 
-    @Override
-    public void addDrinkToMenu() {
-        Menu.menu.put(name, new Cappuccino());
-    }
-
-    @Override
-    public void removeDrinkFromMenu() {
-        Menu.menu.remove(name);
-    }
 }
