@@ -3,8 +3,8 @@ package bar;
 import bar.drinks.Drink;
 
 public class Stock {
-    private static int shot = 10;
-    private static int milk = 10;
+    private static int shot = 15;
+    private static int milk = 15;
     private static int water = 999;
     private static int sugar = 999;
     private static int cinnamon = 999;

@@ -1,11 +1,14 @@
 package bar;
 
+import bar.drinks.Americano;
 import bar.drinks.Drink;
+import bar.drinks.Menu;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Program {
@@ -15,6 +18,19 @@ public class Program {
     static BufferedReader scan;
 
     public static void main(String[] args) {
+        Drink.fillMenu();
+        for (Map.Entry<String, Drink> entry : Menu.menu.entrySet()) {
+            System.out.println(entry.toString());
+        }
+
+
+
+
+
+
+
+
+
         scan = new BufferedReader(new InputStreamReader(System.in));
         stock.showStock();
         conversation();
