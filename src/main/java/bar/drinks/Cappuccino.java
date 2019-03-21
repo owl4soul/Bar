@@ -4,6 +4,8 @@ import bar.Stock;
 
 public class Cappuccino extends Drink implements Menu {
     public static String name = "cappuccino";
+    public static int id = 2;
+
 
     Stock stock = new Stock();
 

@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Card {
-    public static HashMap<String, Drink> card = new HashMap<String, Drink>();
+    public static HashMap<Integer, Drink> card = new HashMap<Integer, Drink>();
     static {{
-        card.put(Americano.name, new Americano());
-        card.put(Cappuccino.name, new Cappuccino());
-        card.put(Espresso.name, new Espresso());
+        card.put(Americano.id, new Americano());
+        card.put(Cappuccino.id, new Cappuccino());
+        card.put(Espresso.id, new Espresso());
     }}
 
 }

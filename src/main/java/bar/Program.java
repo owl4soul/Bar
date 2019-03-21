@@ -23,7 +23,7 @@ public class Program {
     public static void main(String[] args) {
         Card c = new Card();
 
-        for (Map.Entry <String, Drink> d: card.entrySet()) {
+        for (Map.Entry <Integer, Drink> d: card.entrySet()) {
             System.out.println(d.toString());
         }
 
@@ -79,10 +79,10 @@ public class Program {
         if (!stopAsking(input)) {
             try {
                 int num = Integer.parseInt(input);
-                if (num < 1 || num > 3) {
+                if (num < 1 || num > card.keySet().size()) {
                     throw new IllegalArgumentException();
                 } else {
-                    drink.classicDrink(num);
+                    drink = card.get(num);
                     System.out.println("шотов " + drink.getShot());
                     System.out.println("молока " + drink.getMilk());
                     drink.showDrink();
