@@ -1,6 +1,7 @@
 package bar;
 
 import bar.drinks.Americano;
+import bar.drinks.Card;
 import bar.drinks.Drink;
 import bar.drinks.Menu;
 
@@ -11,6 +12,8 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
+import static bar.drinks.Card.card;
+
 public class Program {
     static private boolean endConversation;
     static Drink drink = new Drink();
@@ -18,10 +21,18 @@ public class Program {
     static BufferedReader scan;
 
     public static void main(String[] args) {
-        Drink.fillMenu();
-        for (Map.Entry<String, Drink> entry : Menu.menu.entrySet()) {
-            System.out.println(entry.toString());
+        Card c = new Card();
+
+        for (Map.Entry <String, Drink> d: card.entrySet()) {
+            System.out.println(d.toString());
         }
+
+
+
+//        Drink.fillMenu();
+//        for (Map.Entry<String, Drink> entry : Menu.menu.entrySet()) {
+//            System.out.println(entry.toString());
+//        }
 
 
 
