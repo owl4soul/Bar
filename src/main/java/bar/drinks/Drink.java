@@ -4,17 +4,19 @@ import bar.Stock;
 
 
 public class Drink {
-    private int shot;
-    private int milk;
-    private int water;
-    private int sugar;
-    private int cinnamon;
-    private int ice;
+    public String name;
+    public int shot;
+    public int milk;
+    public int water;
+    public int sugar;
+    public int cinnamon;
+    public int ice;
 
     public Drink() {
     }
 
     public Drink(Drink drink) {
+        this.name = drink.name;
         this.shot = drink.shot;
         this.milk = drink.milk;
         this.water = drink.water;

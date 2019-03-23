@@ -1,11 +1,14 @@
 package bar;
 
 import bar.drinks.Card;
+import bar.drinks.Custom;
 import bar.drinks.Drink;
+import bar.drinks.Parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
 
@@ -17,16 +20,29 @@ public class Program {
     static Stock stock = new Stock();
     static BufferedReader scan;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
+        scan = new BufferedReader(new InputStreamReader(System.in));
+        Parser parser = new Parser();
+
+        Custom cust = new Custom();
+        HashMap<String, String> matrix = parser.getMapOfSubs(parser.getSubstrings(scan.readLine()));
+        cust.createCustom("NEKTAR", matrix);
+        System.out.println(cust.toString());
+
+
         Card c = new Card();
 
         for (Map.Entry <Integer, Drink> d: card.entrySet()) {
             System.out.println(d.toString());
         }
 
-        scan = new BufferedReader(new InputStreamReader(System.in));
         stock.showStock();
         conversation();
+    }
+
+    public void createDrink() {
+        System.out.println("Для создания напитка выберите ингредиенты, из которых он будет состоять: ");
+
     }
 
     static void conversation() {
