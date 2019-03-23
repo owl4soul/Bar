@@ -1,6 +1,7 @@
 package bar.cooking;
 
 import bar.cooking.item.Item;
+import bar.cooking.product.Addition;
 import bar.cooking.product.Drink;
 import bar.cooking.product.Ingredient;
 
@@ -15,8 +16,8 @@ public class Bar {
                 .add(new Item(Ingredient.shot, 10))
                 .add(new Item(Ingredient.milk, 10))
                 .add(new Item(Ingredient.water, 100))
-                .add(new Item(Ingredient.ice, 200))
-                .add(new Item(Ingredient.sugar, 100));
+                .add(new Item(Addition.ice, 200))
+                .add(new Item(Addition.sugar, 100));
 
         producedItems = new Store();
     }
@@ -35,6 +36,8 @@ public class Bar {
 
     public static void main(String[] args) {
         Bar bar = new Bar();
+
+        bar.buy("Espresso");
 
         System.out.println("Please find available drinks below");
         Set<String> availableRecipes = Recipe.getRecipeNames();

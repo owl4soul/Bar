@@ -1,6 +1,7 @@
 package bar.cooking;
 
 import bar.cooking.item.Item;
+import bar.cooking.product.Addition;
 import bar.cooking.product.Drink;
 import bar.cooking.product.Ingredient;
 
@@ -15,6 +16,7 @@ public class Recipe {
     public static final Recipe espresso = new Recipe("Espresso").addCost(Ingredient.shot, 1);
 
     private List<Item> costs = new ArrayList<Item>();
+
     private final String name;
 
     public Recipe(String name) {
@@ -35,6 +37,17 @@ public class Recipe {
         return this;
     }
 
+
+    public Drink addOptional(Drink drink, Ingredient addition) {
+        if (Addition.canBeAdded(drink, (Addition) addition)) {
+            drink.addIngredientItem(new Item(addition));
+            return drink;
+        } else {
+            return drink;
+        }
+    }
+
+
     public boolean checkCanCook(Store store) {
         for (Item item : costs) {
             if (!store.hasResources(item.product, item.count)) {
@@ -50,6 +63,7 @@ public class Recipe {
         for (Item item : costs) {
             drink.addIngredientItem(item);
         }
+        this.addOptional(drink, Ingredient.ice);
         producedItems.add(new Item(drink));
         return drink;
     }
