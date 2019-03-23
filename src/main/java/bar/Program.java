@@ -26,7 +26,7 @@ public class Program {
 
         Custom cust = new Custom();
         HashMap<String, String> matrix = parser.getMapOfSubs(parser.getSubstrings(scan.readLine()));
-        cust.createCustom("NEKTAR", matrix);
+        cust = (Custom) cust.createCustom("NEKTAR", matrix);
         System.out.println(cust.toString());
 
 
