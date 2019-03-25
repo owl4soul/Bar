@@ -1,12 +1,27 @@
 package bar.drinks;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import bar.drinks.Ingredient;
 
 public class Custom extends Drink {
+    public Recipe recipe;
+    public Map<String, String> consist;
 
+    public Custom(String name, Recipe recipe) {
+        this.name = name;
+        this.recipe = recipe;
+        this.consist = new HashMap<String, String>(recipe.matrix);
+    }
+
+    @Override
+    public String toString() {
+        return "Custom{" +
+                "recipe=" + recipe + consist +
+                '}';
+    }
 
     static Map<String, Drink> customDrinks = new HashMap<String, Drink>();
     static {{
@@ -33,28 +48,13 @@ public class Custom extends Drink {
 //    }
 
     //    @Override
-    public static Drink createCustom(String name, Map<String, String> map) {
+    public Drink createCustom(String name, Map<String, String> map) {
 
         Drink custom = new Custom(name);
-        for (Map.Entry<String,String> entry: map.entrySet()) {
-            String nameOfIngredient = entry.getKey();
-            int count = Integer.parseInt(entry.getValue());
-            Ingredient ingre = Ingredient.ingredients.get(nameOfIngredient);
-            custom.totalDrink(ingre.id);
-        }
+        Recipe res = new Recipe.BuilderCustom().withAnything(map).build();
+        custom = new Custom(name, res);
         return custom;
     }
 
-    @Override
-    public String toString() {
-        return "Custom{" +
-                "name='" + name + '\'' +
-                ", shot=" + shot +
-                ", milk=" + milk +
-                ", water=" + water +
-                ", sugar=" + sugar +
-                ", cinnamon=" + cinnamon +
-                ", ice=" + ice +
-                '}';
-    }
+
 }

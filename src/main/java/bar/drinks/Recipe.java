@@ -15,12 +15,12 @@ public class Recipe {
         }
 
         public BuilderCustom withAnything(Map<String, String> matrix) {
-            this.recipe.matrix.putAll(matrix);
+            this.recipe.matrix = new HashMap<String, String>(matrix);
             return this;
         }
 
         public Recipe build() {
-            return new Recipe();
+            return this.recipe;
         }
 
     }

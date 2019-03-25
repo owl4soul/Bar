@@ -1,9 +1,6 @@
 package bar;
 
-import bar.drinks.Card;
-import bar.drinks.Custom;
-import bar.drinks.Drink;
-import bar.drinks.Parser;
+import bar.drinks.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +21,11 @@ public class Program {
         scan = new BufferedReader(new InputStreamReader(System.in));
         Parser parser = new Parser();
 
+        Ingredient.createIngredient("salt", Ingredient.ingredients.size()+1, 800);
+
         Custom cust = new Custom();
+        System.out.println("Введите одной строкой состав напитка в виде:" +
+                "\"ингредиент1 кол-во ингредиент2 кол-во\"");
         HashMap<String, String> matrix = parser.getMapOfSubs(parser.getSubstrings(scan.readLine()));
         cust = (Custom) cust.createCustom("NEKTAR", matrix);
         System.out.println(cust.toString());
@@ -143,7 +144,7 @@ public class Program {
 
 
     static boolean stopAsking(String input) throws IOException {
-        if (input.isEmpty()) {
+        if (input == null) {
             System.out.println("Раз Вы молчите, значит ничего не нужно.");
             input = "stop";
             return stopAsking(input);
