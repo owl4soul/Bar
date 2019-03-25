@@ -135,7 +135,7 @@ public class Drink {
 
         //Метод, собирающий билд!
         public Drink build() {
-            return new Drink();
+            return new Drink(drink); //TODO подставила drink
         }
     }
 
