@@ -1,6 +1,7 @@
 package bar.drinks;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,25 @@ public class Custom extends Drink {
     public Custom(String name, Recipe recipe) {
         this.name = name;
         this.recipe = recipe;
-        this.consist = new HashMap<String, String>(recipe.matrix);
+        if (this.checkingAvailable()) {
+
+            this.consist = new HashMap<String, String>(recipe.matrix);
+        }
     }
+
+    public boolean checkingAvailable() {
+        HashSet<String> tmpConsists = new HashSet<String>(this.recipe.matrix.keySet());
+        for (String name : tmpConsists) {
+            if (!Ingredient.ingredients.containsKey(name)) {
+                System.out.println("Запрошенный ингредиент \"" + name + "\" отсутствует. " +
+                        "Создание напитка по данному рецепту невозможно");
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
     @Override
     public String toString() {

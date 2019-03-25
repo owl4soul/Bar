@@ -23,9 +23,6 @@ public class Ingredient {
 
     public static Map<String, Ingredient> ingredients = new HashMap<String, Ingredient>();
 
-    public Ingredient() {
-    }
-
     static {{
         for (Ingredient i : listIngredients) {
             ingredients.put(i.name, i);
@@ -42,5 +39,8 @@ public class Ingredient {
     public static void createIngredient(String name, int id, int cost) {
         Ingredient created = new Ingredient(name, id, cost);
         ingredients.put(created.name, created);
+    }
+
+    public Ingredient() {
     }
 }
